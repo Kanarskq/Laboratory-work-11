@@ -37,7 +37,7 @@ CREATE TABLE HealthConsultationRequests (
     RequestDate DATE NOT NULL,
     Description VARCHAR(255) NOT NULL,
     UserInfo VARCHAR(255) NOT NULL,
-    FOREIGN KEY (Userno) REFERENCES Users(Userno)
+    FOREIGN KEY (Userno) REFERENCES Users(Userno) 
 );
 
 CREATE TABLE Doctors (
@@ -47,23 +47,6 @@ CREATE TABLE Doctors (
     Email VARCHAR(255) NOT NULL,
     Speciality VARCHAR(255) NOT NULL,
     PhoneNumber VARCHAR(255) NOT NULL,
-    FOREIGN KEY (HealthConsultationRequestno) 
+    FOREIGN KEY (HealthConsultationRequestno)
     REFERENCES HealthConsultationRequests (HealthConsultationRequestno)
 );
-
-/* Обмеження змісту атрибутів таблиць */
-ALTER TABLE Users
-ADD CONSTRAINT ValidEmailFormat
-CHECK (REGEXP_LIKE(Email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$'));
-
-ALTER TABLE Users
-ADD CONSTRAINT ValidPhoneFormat
-CHECK (REGEXP_LIKE(PhoneNumber, '^[0-9]{10}$'));
-
-ALTER TABLE HealthConsultationRequests
-ADD CONSTRAINT RequestDateInPast
-CHECK (RequestDate <= TRUNC(SYSDATE));
-
-ALTER TABLE AirConditionStateRequests
-ADD CONSTRAINT ValidLocationFormat
-CHECK (Region ~* '^[A-Za-z ]+$');
