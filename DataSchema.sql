@@ -37,7 +37,7 @@ CREATE TABLE HealthConsultationRequests (
     RequestDate DATE NOT NULL,
     Description VARCHAR(255) NOT NULL,
     UserInfo VARCHAR(255) NOT NULL,
-    FOREIGN KEY (Userno) REFERENCES Users(Userno) 
+    FOREIGN KEY (Userno) REFERENCES Users (Userno)
 );
 
 CREATE TABLE Doctors (
