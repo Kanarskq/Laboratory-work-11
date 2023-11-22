@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION GetTemperature (UserName IN T_USERS, Region IN VARCHAR2)
+CREATE OR REPLACE FUNCTION GetTemperature ()
 RETURN INTEGER IS
   VTemperatureState VARCHAR2(10);
   VResult INTEGER := 1;
