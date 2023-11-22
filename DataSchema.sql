@@ -1,6 +1,6 @@
 CREATE TABLE Users (
     Userno INT NOT NULL,
-    Name VARCHAR(255) NOT NULL,
+    UsersName VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL,
     Phone_number VARCHAR(255) NOT NULL
 );
