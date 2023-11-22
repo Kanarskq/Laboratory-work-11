@@ -2,12 +2,13 @@ CREATE TABLE Users (
     Userno INT NOT NULL,
     UsersName VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL,
+    Region VARCHAR(255) NOT NULL,
     PhoneNumber VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE TemperatureRequests (
     TemperatureRequestno INT NOT NULL,
-    Userno INT NOT NULL, 
+    Userno INT NOT NULL,
     Region VARCHAR(255) NOT NULL,
     Info VARCHAR(255) NOT NULL
 );
@@ -17,7 +18,7 @@ CREATE TABLE TemperatureAnswers (
     TemperatureRequestno INT NOT NULL,
     Windyno INT NOT NULL,
     Answer INT NOT NULL,
-    "Date" VARCHAR(255) NOT NULL
+    AnswerDate DATE NOT NULL
 );
 
 CREATE TABLE Windy (
@@ -29,7 +30,7 @@ CREATE TABLE Windy (
 CREATE TABLE HealthConsultationRequests (
     HealthConsultationRequestno INT NOT NULL,
     Userno INT NOT NULL,
-    "Date" DATE NOT NULL,
+    RequestDate DATE NOT NULL,
     Description VARCHAR(255) NOT NULL,
     UserInfo VARCHAR(255) NOT NULL
 );
@@ -37,64 +38,59 @@ CREATE TABLE HealthConsultationRequests (
 CREATE TABLE Doctors (
     Doctorno INT NOT NULL,
     HealthConsultationRequestno INT NOT NULL,
-    Name VARCHAR(255) NOT NULL,
+    DoctorsName VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL,
     Speciality VARCHAR(255) NOT NULL,
     PhoneNumber VARCHAR(255) NOT NULL
 );
-
 /* Первинні ключі */
-ALTER TABLE Users ADD CONSTRAINT user_pk
+ALTER TABLE Users ADD CONSTRAINT UserPk
     PRIMARY KEY (Userno);
-	
-ALTER TABLE TemperatureRequests ADD CONSTRAINT TemperatureRequests_pk
+
+ALTER TABLE TemperatureRequests ADD CONSTRAINT TemperatureRequestsPk
     PRIMARY KEY (TemperatureRequestno);
 
-ALTER TABLE TemperatureAnswers ADD CONSTRAINT TemperatureAnswers_pk
+ALTER TABLE TemperatureAnswers ADD CONSTRAINT TemperatureAnswersPk
     PRIMARY KEY (TemperatureAnswerno);
 
-ALTER TABLE Windy ADD CONSTRAINT Windy_pk
+ALTER TABLE Windy ADD CONSTRAINT WindyPk
     PRIMARY KEY (Windyno);
 
 ALTER TABLE Doctors ADD CONSTRAINT Doctors_pk
     PRIMARY KEY (Doctorno);
 
-ALTER TABLE HealthConsultationRequests ADD CONSTRAINT HealthConsultationRequests_pk
+ALTER TABLE HealthConsultationRequests ADD CONSTRAINT HealthConsultationRequestsPk
     PRIMARY KEY (HealthConsultationRequestno);
 
 /* Зовнішні ключі */
-ALTER TABLE TemperatureRequests ADD CONSTRAINT Userno_fk
+ALTER TABLE TemperatureRequests ADD CONSTRAINT UsernoFk
     FOREIGN KEY (Userno) REFERENCES Users(Userno);
 
-ALTER TABLE TemperatureAnswers ADD CONSTRAINT TemperatureRequestno_fk
+ALTER TABLE TemperatureAnswers ADD CONSTRAINT TemperatureRequestnoFk
     FOREIGN KEY (TemperatureRequestno) REFERENCES TemperatureRequests(TemperatureRequestno);
 
-ALTER TABLE TemperatureAnswers ADD CONSTRAINT Windyno_fk
+ALTER TABLE TemperatureAnswers ADD CONSTRAINT WindynoFk
     FOREIGN KEY (Windyno) REFERENCES Windy(Windyno);
 
-ALTER TABLE HealthConsultationRequests ADD CONSTRAINT Userno_fk1
+ALTER TABLE HealthConsultationRequests ADD CONSTRAINT UsernoFk1
     FOREIGN KEY (Userno) REFERENCES Users(Userno);
 
-ALTER TABLE Doctors ADD CONSTRAINT HealthConsultationRequestno_fk
+ALTER TABLE Doctors ADD CONSTRAINT HealthConsultationRequestnoFk
     FOREIGN KEY (HealthConsultationRequestno) REFERENCES HealthConsultationRequests(HealthConsultationRequestno);
 
 /* Обмеження змісту атрибутів таблиць */
-
+ALTER TABLE Users
+ADD CONSTRAINT ValidEmailFormat
+CHECK (REGEXP_LIKE(Email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$'));
 
 ALTER TABLE Users
-ADD CONSTRAINT valid_email_format
-CHECK (REGEXP_LIKE(email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$'));
-
-ALTER TABLE Users
-ADD CONSTRAINT valid_phone_format
-CHECK (REGEXP_LIKE(phone_number, '^[0-9]{10}$'));
+ADD CONSTRAINT ValidPhoneFormat
+CHECK (REGEXP_LIKE(PhoneNumber, '^[0-9]{10}$'));
 
 ALTER TABLE HealthConsultationRequests
-ADD CONSTRAINT request_date_in_past
-CHECK ("date" <= TRUNC(SYSDATE));
-
-
+ADD CONSTRAINT RequestDateInPast
+CHECK (RequestDate <= TRUNC(SYSDATE));
 
 ALTER TABLE AirConditionStateRequests
-ADD CONSTRAINT valid_location_format
-CHECK (region ~* '^[A-Za-z ]+$');
+ADD CONSTRAINT ValidLocationFormat
+CHECK (Region ~* '^[A-Za-z ]+$');
