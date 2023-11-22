@@ -10,7 +10,8 @@ CREATE TABLE TemperatureRequests (
     TemperatureRequestno INT PRIMARY KEY,
     Userno INT NOT NULL,
     Region VARCHAR(255) NOT NULL,
-    Info VARCHAR(255) NOT NULL
+    Info VARCHAR(255) NOT NULL,
+    FOREIGN KEY (Userno) REFERENCES Users(Userno)
 );
 
 CREATE TABLE TemperatureAnswers (
@@ -18,7 +19,9 @@ CREATE TABLE TemperatureAnswers (
     TemperatureRequestno INT NOT NULL,
     Windyno INT NOT NULL,
     Answer INT NOT NULL,
-    AnswerDate DATE NOT NULL
+    AnswerDate DATE NOT NULL,
+    FOREIGN KEY (TemperatureRequestno) REFERENCES TemperatureRequests(TemperatureRequestno),
+    FOREIGN KEY (Windyno) REFERENCES Windy(Windyno)
 );
 
 CREATE TABLE Windy (
@@ -32,7 +35,8 @@ CREATE TABLE HealthConsultationRequests (
     Userno INT NOT NULL,
     RequestDate DATE NOT NULL,
     Description VARCHAR(255) NOT NULL,
-    UserInfo VARCHAR(255) NOT NULL
+    UserInfo VARCHAR(255) NOT NULL,
+    FOREIGN KEY (Userno) REFERENCES Users(Userno)
 );
 
 CREATE TABLE Doctors (
@@ -41,23 +45,9 @@ CREATE TABLE Doctors (
     DoctorsName VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL,
     Speciality VARCHAR(255) NOT NULL,
-    PhoneNumber VARCHAR(255) NOT NULL
+    PhoneNumber VARCHAR(255) NOT NULL,
+    FOREIGN KEY (HealthConsultationRequestno) REFERENCES HealthConsultationRequests(HealthConsultationRequestno)
 );
-
-/* Зовнішні ключі */
-ALTER TABLE TemperatureRequests ADD CONSTRAINT UsernoFk FOREIGN KEY (Userno) REFERENCES Users(Userno);
-
-ALTER TABLE TemperatureAnswers ADD CONSTRAINT TemperatureRequestnoFk
-    FOREIGN KEY (TemperatureRequestno) REFERENCES TemperatureRequests(TemperatureRequestno);
-
-ALTER TABLE TemperatureAnswers ADD CONSTRAINT WindynoFk
-    FOREIGN KEY (Windyno) REFERENCES Windy(Windyno);
-
-ALTER TABLE HealthConsultationRequests ADD CONSTRAINT UsernoFk1
-    FOREIGN KEY (Userno) REFERENCES Users(Userno);
-
-ALTER TABLE Doctors ADD CONSTRAINT HealthConsultationRequestnoFk
-    FOREIGN KEY (HealthConsultationRequestno) REFERENCES HealthConsultationRequests(HealthConsultationRequestno);
 
 /* Обмеження змісту атрибутів таблиць */
 ALTER TABLE Users
