@@ -44,27 +44,21 @@ CREATE TABLE Doctors (
     PhoneNumber VARCHAR(255) NOT NULL
 );
 /* Первинні ключі */
-ALTER TABLE Users ADD CONSTRAINT UserPk
-    PRIMARY KEY (Userno);
+ALTER TABLE Users ADD CONSTRAINT UserPk PRIMARY KEY (Userno);
 
-ALTER TABLE TemperatureRequests ADD CONSTRAINT TemperatureRequestsPk
-    PRIMARY KEY (TemperatureRequestno);
 
-ALTER TABLE TemperatureAnswers ADD CONSTRAINT TemperatureAnswersPk
-    PRIMARY KEY (TemperatureAnswerno);
+ALTER TABLE TemperatureRequests ADD CONSTRAINT TemperatureRequestsPk PRIMARY KEY (TemperatureRequestno);
 
-ALTER TABLE Windy ADD CONSTRAINT WindyPk
-    PRIMARY KEY (Windyno);
+ALTER TABLE TemperatureAnswers ADD CONSTRAINT TemperatureAnswersPk PRIMARY KEY (TemperatureAnswerno);
 
-ALTER TABLE Doctors ADD CONSTRAINT Doctors_pk
-    PRIMARY KEY (Doctorno);
+ALTER TABLE Windy ADD CONSTRAINT WindyPk PRIMARY KEY (Windyno);
 
-ALTER TABLE HealthConsultationRequests ADD CONSTRAINT HealthConsultationRequestsPk
-    PRIMARY KEY (HealthConsultationRequestno);
+ALTER TABLE Doctors ADD CONSTRAINT DoctorsPk PRIMARY KEY (Doctorno);
+
+ALTER TABLE HealthConsultationRequests ADD CONSTRAINT HealthConsultationRequestsPk PRIMARY KEY (HealthConsultationRequestno);
 
 /* Зовнішні ключі */
-ALTER TABLE TemperatureRequests ADD CONSTRAINT UsernoFk
-    FOREIGN KEY (Userno) REFERENCES Users(Userno);
+ALTER TABLE TemperatureRequests ADD CONSTRAINT UsernoFk FOREIGN KEY (Userno) REFERENCES Users(Userno);
 
 ALTER TABLE TemperatureAnswers ADD CONSTRAINT TemperatureRequestnoFk
     FOREIGN KEY (TemperatureRequestno) REFERENCES TemperatureRequests(TemperatureRequestno);
