@@ -11,7 +11,7 @@ CREATE TABLE TemperatureRequests (
     Userno INT NOT NULL,
     Region VARCHAR(255) NOT NULL,
     Info VARCHAR(255) NOT NULL,
-    FOREIGN KEY (Userno) REFERENCES Users(Userno)
+    FOREIGN KEY (Userno) REFERENCES Users (Userno)
 );
 
 CREATE TABLE TemperatureAnswers (
@@ -20,8 +20,9 @@ CREATE TABLE TemperatureAnswers (
     Windyno INT NOT NULL,
     Answer INT NOT NULL,
     AnswerDate DATE NOT NULL,
-    FOREIGN KEY (TemperatureRequestno) REFERENCES TemperatureRequests(TemperatureRequestno),
-    FOREIGN KEY (Windyno) REFERENCES Windy(Windyno)
+    FOREIGN KEY (TemperatureRequestno)
+    REFERENCES TemperatureRequests (TemperatureRequestno),
+    FOREIGN KEY (Windyno) REFERENCES Windy (Windyno)
 );
 
 CREATE TABLE Windy (
@@ -46,7 +47,8 @@ CREATE TABLE Doctors (
     Email VARCHAR(255) NOT NULL,
     Speciality VARCHAR(255) NOT NULL,
     PhoneNumber VARCHAR(255) NOT NULL,
-    FOREIGN KEY (HealthConsultationRequestno) REFERENCES HealthConsultationRequests(HealthConsultationRequestno)
+    FOREIGN KEY (HealthConsultationRequestno) 
+    REFERENCES HealthConsultationRequests (HealthConsultationRequestno)
 );
 
 /* Обмеження змісту атрибутів таблиць */
