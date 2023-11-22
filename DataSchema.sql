@@ -2,48 +2,48 @@ DROP TABLE Doctors
 
 CREATE TABLE Users (
     Userno INT NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    region VARCHAR(255) NOT NULL,
-    phone_number VARCHAR(255) NOT NULL
+    Name VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Region VARCHAR(255) NOT NULL,
+    Phone_number VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE TemperatureRequests (
     TemperatureRequestno INT NOT NULL,
     Userno INT NOT NULL, 
-    region VARCHAR(255) NOT NULL,
-    info VARCHAR(255) NOT NULL
+    Region VARCHAR(255) NOT NULL,
+    Info VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE TemperatureAnswers (
     TemperatureAnswerno INT NOT NULL,
     TemperatureRequestno INT NOT NULL,
     Windyno INT NOT NULL,
-    answer INT NOT NULL,
-    "date" VARCHAR(255) NOT NULL
+    Answer INT NOT NULL,
+    "Date" VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Windy (
     Windyno INT NOT NULL,
-    region VARCHAR(255) NOT NULL,
+    Region VARCHAR(255) NOT NULL,
     WheatherState VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE HealthConsultationRequests (
     HealthConsultationRequestno INT NOT NULL,
     Userno INT NOT NULL,
-    "date" DATE NOT NULL,
-    description VARCHAR(255) NOT NULL,
-    userInfo VARCHAR(255) NOT NULL
+    "Date" DATE NOT NULL,
+    Description VARCHAR(255) NOT NULL,
+    UserInfo VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Doctors (
     Doctorno INT NOT NULL,
     HealthConsultationRequestno INT NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    speciality VARCHAR(255) NOT NULL,
-    phoneNumber VARCHAR(255) NOT NULL
+    Name VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Speciality VARCHAR(255) NOT NULL,
+    PhoneNumber VARCHAR(255) NOT NULL
 );
 
 /* Первинні ключі */
