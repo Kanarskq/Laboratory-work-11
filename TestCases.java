@@ -19,7 +19,7 @@ class TestCases {
             cstmt1.registerOutParameter(1, Types.NUMERIC);
 
             // Test Case 1
-            System.out.print("TC1 ( 'User is "Anatoliy" and region is "Odessa"' ) := ");
+            System.out.print("TC1 ( 'User is \"Anatoliy\" and region is \"Odessa\"' ) := ");
             cstmt1.setString(2, "Anatoliy");
             cstmt1.setString(3, "Odessa");
             cstmt1.executeUpdate();
@@ -33,7 +33,7 @@ class TestCases {
             }
 
             // Test Case 2
-            System.out.print("TC2 ( 'Empty user and region is "Odessa"' ) := ");
+            System.out.print("TC2 ( 'Empty user and region is \"Odessa\"' ) := ");
             cstmt1.setString(2, null);
             cstmt1.setString(3, "Odessa");
             cstmt1.executeUpdate();
@@ -47,7 +47,7 @@ class TestCases {
             }
 
 	    // Test Case 3
-            System.out.print("TC3 ( 'User is "Anatoliy" and empty region' ) := ");
+            System.out.print("TC3 ( 'User is \"Anatoliy\" and empty region' ) := ");
             cstmt1.setString(2, "Anatoliy");
             cstmt1.setString(3, null);
             cstmt1.executeUpdate();
@@ -61,7 +61,7 @@ class TestCases {
             }
 
 	    // Test Case 4
-            System.out.print("TC4 ( 'User is "Anatoliy" and region is "Odessa 2+2=4"' ) := ");
+            System.out.print("TC4 ( 'User is \"Anatoliy\" and region is \"Odessa 2+2=4\"' ) := ");
             cstmt1.setString(2, "Anatoliy");
             cstmt1.setString(3, "Odessa 2+2=4");
             cstmt1.executeUpdate();
@@ -75,7 +75,7 @@ class TestCases {
             }
 
 	    // Test Case 5
-            System.out.print("TC5 ( 'User is "Anatoliy" and region is "I love chicken with sauce and you"' ) := ");
+            System.out.print("TC5 ( 'User is \"Anatoliy\" and region is \"I love chicken with sauce and you\"' ) := ");
             cstmt1.setString(2, "Anatoliy");
             cstmt1.setString(3, 'I love chicken with sauce and you');
             cstmt1.executeUpdate();
