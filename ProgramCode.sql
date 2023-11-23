@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION getTemperature(user IN T_USERS, region IN VARCHAR2) 
+CREATE OR REPLACE FUNCTION getTemperature(User IN T_USERS, region IN VARCHAR2) 
 RETURN INTEGER IS
   v_temperature_state VARCHAR2(10);
   v_result INTEGER := 1;
