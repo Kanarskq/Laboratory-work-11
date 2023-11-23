@@ -77,7 +77,7 @@ class TestCases {
 	    // Test Case 5
             System.out.print("TC5 ( 'User is \"Anatoliy\" and region is \"I love chicken with sauce and you\"' ) := ");
             cstmt1.setString(2, "Anatoliy");
-            cstmt1.setString(3, 'I love chicken with sauce and you');
+            cstmt1.setString(3, "I love chicken with sauce and you");
             cstmt1.executeUpdate();
 
             // analyze TestCase-result
