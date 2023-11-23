@@ -1,7 +1,7 @@
 import java.sql.*;  
 import oracle.jdbc.driver.*;
 
-class TestCases {
+class TestCasesModified {
     public static void main(final String[] args) {
         int testCaseResult = 0; // 0 = Passed -1 = Failed
 try {
