@@ -17,4 +17,4 @@ jobs:
     run: |
       cd $GITHUB_WORKSPACE/
       export CLASSPATH="./ojdbc8.jar:./"
-      java TestCases ${{ secrets.LOGIN }} ${{ secrets.PASSWORD }}
+      java TestCasesModified ${{ secrets.LOGIN }} ${{ secrets.PASSWORD }}
