@@ -19,4 +19,4 @@ jobs:
           pip install sqlfluff
       - name: Lint SQL files
         run: |
-          sqlfluff lint $GITHUB_WORKSPACE/ProgramCode.sql --dialect oracle
+          sqlfluff lint $GITHUB_WORKSPACE/ProgramCodeModified.sql --dialect oracle
