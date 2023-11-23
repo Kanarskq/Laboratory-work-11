@@ -1,7 +1,7 @@
 CREATE OR REPLACE FUNCTION GetTemperature ()
 RETURN INTEGER IS
-  VTemperatureState VARCHAR2(10);
-  VResult INTEGER := 1;
+    VTemperatureState VARCHAR2 (25);
+    VResult INTEGER := 1;
 BEGIN
 
   FOR TempRow IN (SELECT W.WHEATHERSTATE
