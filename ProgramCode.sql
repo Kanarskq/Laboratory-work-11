@@ -23,5 +23,5 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('Today in ' || P_REGION || ' is a good temperature of ' || VTemperatureState || ' degrees Celsius');
     END IF;
 
-    RETURN VResult;
+    RETURN VResult; 
 END GetTemperature;
