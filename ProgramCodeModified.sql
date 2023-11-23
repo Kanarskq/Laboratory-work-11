@@ -1,29 +1,29 @@
 CREATE OR REPLACE FUNCTION GetTemperature 
 RETURN INTEGER IS
-    v_temperature_state VARCHAR2(25);
-    v_result INTEGER := 1;
+    VTemperatureState VARCHAR2(25);
+    VResult INTEGER := 1;
 BEGIN
-    FOR temp_row IN (SELECT w.weatherstate
-                     FROM windy w
-                     WHERE w.region = p_region) 
+    FOR TempRow IN (SELECT W.WEATHERSTATE
+                     FROM WINDY W
+                     WHERE W.REGION = P_REGION) 
     LOOP
-        v_temperature_state := temp_row.weatherstate;
+        VTemperatureState := TempRow.WEATHERSTATE;
         EXIT;
     END LOOP;
 
-    IF p_user_name IS NULL THEN
-        v_result := -1; 
-    ELSIF p_region IS NULL THEN
-        v_result := -1; 
-    ELSIF REGEXP_LIKE(p_region, '[[:digit:][:punct:]]') THEN
-        v_result := -1; 
-    ELSIF LENGTH(p_region) > 25 THEN
-        v_result := -1; 
+    IF P_USER_NAME IS NULL THEN
+        VResult := -1; 
+    ELSIF P_REGION IS NULL THEN
+        VResult := -1; 
+    ELSIF REGEXP_LIKE(P_REGION, '[[:digit:][:punct:]]') THEN
+        VResult := -1; 
+    ELSIF LENGTH(P_REGION) > 25 THEN
+        VResult := -1; 
     ELSE
-        v_result := 1;
-        DBMS_OUTPUT.PUT_LINE('Today in ' || p_region || ' is a good temperature of ' || v_temperature_state || ' degrees Celsius');
+        VResult := 1;
+        DBMS_OUTPUT.PUT_LINE('Today in ' || P_REGION || ' is a good temperature of ' || VTemperatureState || ' degrees Celsius');
     END IF;
 
-    RETURN v_result;
+    RETURN VResult;
 END GetTemperature;
 /
