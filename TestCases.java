@@ -10,12 +10,12 @@ class TestCases {
             
             // open connect to DB
             Connection con = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@91.219.60.189:1521/XEPDB1",
+                    "jdbc:oracle:thin:@185.235.218.67:1521/XEPDB1",
                     args[0], // get login as 1st command line parameter
                     args[1]); // get password as 2nd command line parameter 
 
             // create template string with PL/SQL-function "GetTemperature"
-            CallableStatement cstmt1 = con.prepareCall("{? = call GetTemperature(?,?)}");
+            CallableStatement cstmt1 = con.prepareCall("{? = call getTemperature(?,?)}");
             cstmt1.registerOutParameter(1, Types.NUMERIC);
 
             // Test Case 1
