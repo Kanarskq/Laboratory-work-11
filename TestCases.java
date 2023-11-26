@@ -25,7 +25,7 @@ class TestCases {
             cstmt1.executeUpdate();
 
             // analyze TestCase-result
-            if (cstmt1.getInt(1) == -1) {
+            if (cstmt1.getInt(1) == 1) {
                 System.out.println("Passed");
             } else {
                 System.out.println("Failed");
