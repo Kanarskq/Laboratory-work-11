@@ -3,7 +3,7 @@ import oracle.jdbc.driver.*;
 
 class TestCases {
     public static void main(final String[] args) {
-        int testCaseResult = 1; // 1 = Passed -1 = Failed
+        int testCaseResult = 0; // 0 = Passed -1 = Failed
         try { 
             // load Oracle JDBC-driver
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
