@@ -32,6 +32,8 @@ class TestCases {
                 testCaseResult = -1;
             }
 
+	    cstmt1.clearParameters();
+
             // Test Case 2
             System.out.print("TC2 ( 'Empty user and region is \"Odessa\"' ) := ");
             cstmt1.setString(2, null);
@@ -45,7 +47,9 @@ class TestCases {
                 System.out.println("Failed");
                 testCaseResult = -1;
             }
-
+		
+	    cstmt1.clearParameters();
+		
 	    // Test Case 3
             System.out.print("TC3 ( 'User is \"Anatoliy\" and empty region' ) := ");
             cstmt1.setString(2, "Anatoliy");
@@ -59,6 +63,8 @@ class TestCases {
                 System.out.println("Failed");
                 testCaseResult = -1;
             }
+
+	    cstmt1.clearParameters();
 
 	    // Test Case 4
             System.out.print("TC4 ( 'User is \"Anatoliy\" and region is \"Odessa 2+2=4\"' ) := ");
@@ -74,6 +80,8 @@ class TestCases {
                 testCaseResult = -1;
             }
 
+	    cstmt1.clearParameters();
+		
 	    // Test Case 5
             System.out.print("TC5 ( 'User is \"Anatoliy\" and region is \"I love chicken with sauce and you\"' ) := ");
             cstmt1.setString(2, "Anatoliy");
